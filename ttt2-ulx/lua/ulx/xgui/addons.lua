@@ -7,7 +7,7 @@ xlib.makelabel{
 	y = 5,
 	w = 600,
 	wordwrap = true,
-	label = "Settings of Addons that support ULX.",
+	label = "支持 ULX 的插件设置.",
 	parent = ttt2_addon_settings
 }
 
@@ -27,7 +27,7 @@ ttt2_addon_settings.catList = xlib.makelistview{
 	parent = ttt2_addon_settings
 }
 
-ttt2_addon_settings.catList:AddColumn("Addon Settings")
+ttt2_addon_settings.catList:AddColumn("插件设置")
 
 ttt2_addon_settings.catList.Columns[1].DoClick = function()
 
@@ -114,9 +114,10 @@ end
 ttt2_addon_settings.processModules()
 
 xgui.hookEvent("onProcessModules", nil, ttt2_addon_settings.processModules)
-xgui.addModule("Addons", ttt2_addon_settings, "icon16/addons.png", "xgui_gmsettings")
+xgui.addModule("插件", ttt2_addon_settings, "icon16/addons.png", "xgui_gmsettings")
 
-hook.Run("TTTUlxModifyAddonSettings", "ttt2_addon_settings")
+-- Modify ULX to gather information for F1 Menu
+HookRunTTTUlxModifyAddonSettings("TTTUlxModifyAddonSettings", "ttt2_addon_settings")
 
 if TTTC then
 	---------------------------------------------------------
@@ -129,7 +130,7 @@ if TTTC then
 	local clsclp = vgui.Create("DCollapsibleCategory", clspnl1)
 	clsclp:SetSize(390, 165)
 	clsclp:SetExpanded(1)
-	clsclp:SetLabel("Basic Settings")
+	clsclp:SetLabel("基本设置")
 
 	local clslst1 = vgui.Create("DPanelList", clsclp)
 	clslst1:SetPos(5, 25)
@@ -137,37 +138,37 @@ if TTTC then
 	clslst1:SetSpacing(5)
 
 	clslst1:AddItem(xlib.makecheckbox{
-		label = "Enable classes? (ttt2_classes) (def. 1)",
+		label = "启用班级? (ttt2_classes) (默认 . 1)",
 		repconvar = "rep_ttt2_classes",
 		parent = clslst
 	})
 
 	clslst1:AddItem(xlib.makecheckbox{
-		label = "Limited classes? (ttt_classes_limited) (def. 1)",
+		label = "有限的班级? (ttt_classes_limited) (默认 . 1)",
 		repconvar = "rep_ttt_classes_limited",
 		parent = clslst
 	})
 
 	clslst1:AddItem(xlib.makecheckbox{
-		label = "Option to choose between two classes? (ttt_classes_option) (def. 1)",
+		label = "可选择在两个班级之间进行选择? (ttt_classes_option) (默认 . 1)",
 		repconvar = "rep_ttt_classes_option",
 		parent = clslst
 	})
 
 	clslst1:AddItem(xlib.makecheckbox{
-		label = "Passive items on class slot? (ttt_classes_extraslot) (def. 1)",
+		label = "职业栏位上的被动物品? (ttt_classes_extraslot) (默认 . 1)",
 		repconvar = "rep_ttt_classes_extraslot",
 		parent = clslst
 	})
 
 	clslst1:AddItem(xlib.makecheckbox{
-		label = "Keep class on respawn? (ttt_classes_keep_on_respawn) (def. 1)",
+		label = "保持班级重生? (ttt_classes_keep_on_respawn) (默认 . 1)",
 		repconvar = "rep_ttt_classes_keep_on_respawn",
 		parent = clslst
 	})
 
 	clslst1:AddItem(xlib.makecheckbox{
-		label = "Show class info popup? (ttt_classes_show_popup) (def. 1)",
+		label = "显示班级信息弹出窗口? (ttt_classes_show_popup) (默认 . 1)",
 		repconvar = "rep_ttt_classes_show_popup",
 		parent = clslst
 	})
@@ -177,12 +178,12 @@ if TTTC then
 		y = 0,
 		w = 415,
 		wordwrap = true,
-		label = "How many different random classes should be available? 0 for infinite.",
+		label = "应该有多少不同的随机类别? 0 表示无限.",
 		parent = clslst
 	})
 
 	clslst1:AddItem(xlib.makeslider{
-		label = "ttt_classes_different (def. 0)",
+		label = "班级不同 (默认 . 0)",
 		min = 0,
 		max = 100,
 		decimal = 0,
@@ -191,7 +192,7 @@ if TTTC then
 	})
 
 	xgui.hookEvent("onProcessModules", nil, clspnl1.processModules)
-	xgui.addSubModule("TTT2 Classes", clspnl1, nil, "ttt2_addon_settings")
+	xgui.addSubModule("恐怖小镇2的类", clspnl1, nil, "ttt2_addon_settings")
 
 
 	----------------------------------------------------------------
@@ -215,13 +216,13 @@ if TTTC then
 		clslst2:SetSpacing(5)
 
 		clslst2:AddItem(xlib.makecheckbox{
-			label = pName .. "? (tttc_class_" .. v.name .. "_enabled) (def. 1)",
+			label = "是否启用班级 (默认 . 1)",
 			repconvar = "rep_tttc_class_" .. v.name .. "_enabled",
 			parent = clslst2
 		})
 
 		clslst2:AddItem(xlib.makeslider{
-			label = "tttc_class_" .. v.name .. "_random",
+			label = "班级的概率",
 			min = 1,
 			max = 100,
 			repconvar = "rep_tttc_class_" .. v.name .. "_random",
@@ -230,5 +231,5 @@ if TTTC then
 	end
 
 	xgui.hookEvent("onProcessModules", nil, clspnl2.processModules)
-	xgui.addSubModule("TTT2 Class Settings", clspnl2, nil, "ttt2_addon_settings")
+	xgui.addSubModule("恐怖小镇2的类设置", clspnl2, nil, "ttt2_addon_settings")
 end

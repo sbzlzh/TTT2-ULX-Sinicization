@@ -49,5 +49,5 @@ credits:addParam{type = ULib.cmds.PlayersArg}
 credits:addParam{type = ULib.cmds.NumArg, hint = "学分", ULib.cmds.round}
 credits:defaultAccess(ULib.ACCESS_SUPERADMIN)
 credits:setOpposite("ulx silent credits", {nil, nil, nil, true}, "!scredits", true)
-credits:help("给予 <target(s)> 学分.")
+credits:help("给予目标学分.")
 --[End]----------------------------------------------------------------------------------------

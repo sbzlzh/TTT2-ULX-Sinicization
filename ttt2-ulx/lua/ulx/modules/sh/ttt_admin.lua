@@ -395,7 +395,7 @@ force:addParam{type = ULib.cmds.StringArg, completes = ulx.target_role, hint = "
 force:addParam{type = ULib.cmds.BoolArg, invisible = true}
 force:defaultAccess(ULib.ACCESS_SUPERADMIN)
 force:setOpposite("ulx sforce", {nil, nil, nil, true}, "!sforce", true)
-force:help("强制 <target(s)> 成为指定角色.")
+force:help("强制目标成为指定角色.")
 
 --[Force class]---------------------------------------------------------------------------------
 --[[ulx.forceclass][Forces < target(s) > to become a specified class.]
@@ -471,7 +471,7 @@ forceclass:addParam{type = ULib.cmds.StringArg, completes = ulx.target_class, hi
 forceclass:addParam{type = ULib.cmds.BoolArg, invisible = true}
 forceclass:defaultAccess(ULib.ACCESS_SUPERADMIN)
 forceclass:setOpposite("ulx sforceclass", {nil, nil, nil, true}, "!sforceclass", true)
-forceclass:help("强制class <target(s)> 成为指定的类.")
+forceclass:help("强制class目标成为指定的类.")
 
 local function initClassClasses()
 	if TTTC then
@@ -570,7 +570,7 @@ respawn:addParam{type = ULib.cmds.PlayersArg}
 respawn:addParam{type = ULib.cmds.BoolArg, invisible = true}
 respawn:defaultAccess(ULib.ACCESS_SUPERADMIN)
 respawn:setOpposite("ulx srespawn", {nil, nil, true}, "!srespawn", true)
-respawn:help("重生 <target(s)>.")
+respawn:help("重生目标.")
 --[End]----------------------------------------------------------------------------------------
 
 
@@ -712,7 +712,7 @@ local karma = ulx.command(CATEGORY_NAME, "ulx karma", ulx.karma, "!karma")
 karma:addParam{type = ULib.cmds.PlayersArg}
 karma:addParam{type = ULib.cmds.NumArg, min = 0, max = 10000, default = 1000, hint = "Karma", ULib.cmds.optional, ULib.cmds.round}
 karma:defaultAccess(ULib.ACCESS_ADMIN)
-karma:help("改变 <target(s)> 业力值.")
+karma:help("改变目标业力值.")
 --[End]----------------------------------------------------------------------------------------
 
 
@@ -753,7 +753,7 @@ tttspec:addParam{type = ULib.cmds.PlayersArg}
 tttspec:addParam{type = ULib.cmds.BoolArg, invisible = true}
 tttspec:defaultAccess(ULib.ACCESS_ADMIN)
 tttspec:setOpposite("ulx unspec", {nil, nil, true}, "!unspec")
-tttspec:help("强制 <target(s)> 进入/离开旁观者.")
+tttspec:help("强制目标进入/离开旁观者.")
 --[End]----------------------------------------------------------------------------------------
 
 ------------------------------ Next Round  ------------------------------

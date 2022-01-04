@@ -3,7 +3,7 @@ ULX_DYNAMIC_RCVARS = {}
 
 hook.Run("TTTUlxDynamicRCVars", ULX_DYNAMIC_RCVARS)
 
--- Defines ttt cvar limits and ttt specific settings for the ttt gamemode.
+-- 默认ines ttt cvar limits and ttt specific settings for the ttt gamemode.
 
 local terrortown_settings = xlib.makepanel{parent = xgui.null}
 
@@ -12,7 +12,7 @@ xlib.makelabel{
 	y = 5,
 	w = 600,
 	wordwrap = true,
-	label = "叛徒模式2 ULX 命令 XGUI 模块 由Bender180制作 由 Alf21 修改 汉化 by 随波逐流",
+	label = "恐怖小镇2 ULX命令 XGUI模块 创建者:Bender180(由Alf21修改并且由随波逐流汉化)",
 	parent = terrortown_settings
 }
 
@@ -30,7 +30,7 @@ xlib.makelabel{
 	y = 190,
 	w = 160,
 	wordwrap = true,
-	label = "服务器所有者注意:限制此面板允许或拒绝对 xgui_gmsettings 的权限.",
+	label = "服务器所有者注意: 限制此面板允许或拒绝对 xgui_gmsettings 的权限.",
 	parent = terrortown_settings
 }
 
@@ -48,7 +48,7 @@ xlib.makelabel{
 	y = 325,
 	w = 160,
 	wordwrap = true,
-	label = "并非所有设置都会回显聊天.",
+	label = "并非所有设置都响应聊天.",
 	parent = terrortown_settings
 }
 
@@ -68,7 +68,7 @@ terrortown_settings.catList = xlib.makelistview{
 	parent = terrortown_settings
 }
 
-terrortown_settings.catList:AddColumn("恐怖小镇 2 设置")
+terrortown_settings.catList:AddColumn("恐怖小镇2设置")
 
 terrortown_settings.catList.Columns[1].DoClick = function()
 
@@ -154,7 +154,7 @@ end
 terrortown_settings.processModules()
 
 xgui.hookEvent("onProcessModules", nil, terrortown_settings.processModules)
-xgui.addModule("TTT2", terrortown_settings, "icon16/ttt.png", "xgui_gmsettings")
+xgui.addModule("恐怖小镇2服务器设定", terrortown_settings, "icon16/ttt.png", "xgui_gmsettings")
 
 -----------------------------------------------------------------
 -------------------- MODULE: ROUND STRUCTURE --------------------
@@ -174,7 +174,7 @@ rspaplst:SetSize(390, 95)
 rspaplst:SetSpacing(5)
 
 rspaplst:AddItem(xlib.makeslider{
-	label = "ttt_preptime_seconds (def. 30)",
+	label = "准备阶段时间 (默认. 30)",
 	min = 1,
 	max = 120,
 	repconvar = "rep_ttt_preptime_seconds",
@@ -182,7 +182,7 @@ rspaplst:AddItem(xlib.makeslider{
 })
 
 rspaplst:AddItem(xlib.makeslider{
-	label = "ttt_firstpreptime (def. 60)",
+	label = "第一轮准备阶段的时间 (默认. 60)",
 	min = 1,
 	max = 120,
 	repconvar = "rep_ttt_firstpreptime",
@@ -190,7 +190,7 @@ rspaplst:AddItem(xlib.makeslider{
 })
 
 rspaplst:AddItem(xlib.makeslider{
-	label = "ttt_posttime_seconds (def. 30)",
+	label = "回合结束时间 (默认. 30)",
 	min = 1,
 	max = 120,
 	repconvar = "rep_ttt_posttime_seconds",
@@ -198,7 +198,7 @@ rspaplst:AddItem(xlib.makeslider{
 })
 
 rspaplst:AddItem(xlib.makecheckbox{
-	label = "ttt2_prep_respawn (def. 0)",
+	label = "准备阶段重生 (默认. 0)",
 	repconvar = "rep_ttt2_prep_respawn",
 	parent = rsrllst
 })
@@ -207,7 +207,7 @@ rspaplst:AddItem(xlib.makecheckbox{
 local rsrlclp = vgui.Create("DCollapsibleCategory", rspnl)
 rsrlclp:SetSize(390, 90)
 rsrlclp:SetExpanded(0)
-rsrlclp:SetLabel("回合长度")
+rsrlclp:SetLabel("回合时间")
 
 local rsrl = vgui.Create("DPanelList", rsrlclp)
 rsrl:SetPos(5, 25)
@@ -215,13 +215,13 @@ rsrl:SetSize(390, 90)
 rsrl:SetSpacing(5)
 
 rsrl:AddItem(xlib.makecheckbox{
-	label = "ttt_haste",
+	label = "急速模式",
 	repconvar = "rep_ttt_haste",
 	parent = rsrl
 })
 
 rsrl:AddItem(xlib.makeslider{
-	label = "ttt_haste_starting_minutes (def. 5)",
+	label = "急速模式设置时间 (默认. 5)",
 	min = 1,
 	max = 60,
 	repconvar = "rep_ttt_haste_starting_minutes",
@@ -229,7 +229,7 @@ rsrl:AddItem(xlib.makeslider{
 })
 
 rsrl:AddItem(xlib.makeslider{
-	label = "ttt_haste_minutes_per_death (def. 0.5)",
+	label = "每次死亡的回合设置时间 (默认. 0.5)",
 	min = 0.1,
 	max = 9,
 	decimal = 1,
@@ -238,7 +238,7 @@ rsrl:AddItem(xlib.makeslider{
 })
 
 rsrl:AddItem(xlib.makeslider{
-	label = "ttt_roundtime_minutes (def. 10)",
+	label = "每轮的时间限制 (默认. 10)",
 	min = 1,
 	max = 60,
 	repconvar = "rep_ttt_roundtime_minutes",
@@ -257,7 +257,7 @@ msavlst:SetSize(390, 95)
 msavlst:SetSpacing(5)
 
 msavlst:AddItem(xlib.makeslider{
-	label = "ttt_round_limit (def. 6)",
+	label = "切换地图前的最大回合数 (默认. 6)",
 	min = 1,
 	max = 100,
 	repconvar = "rep_ttt_round_limit",
@@ -265,7 +265,7 @@ msavlst:AddItem(xlib.makeslider{
 })
 
 msavlst:AddItem(xlib.makeslider{
-	label = "ttt_time_limit_minutes (def. 75)",
+	label = "地图切换前的最大分钟数 (默认. 75)",
 	min = 1,
 	max = 150,
 	repconvar = "rep_ttt_time_limit_minutes",
@@ -273,14 +273,14 @@ msavlst:AddItem(xlib.makeslider{
 })
 
 msavlst:AddItem(xlib.makecheckbox{
-	label = "ttt_always_use_mapcycle (def. 0)",
+	label = "地图投票系统 (默认. 0)",
 	repconvar = "rep_ttt_always_use_mapcycle",
 	parent = msavlst
 })
 
 msavlst:AddItem(xlib.makelabel{
 	wordwrap = true,
-	label = "这什么都不做,但因为它包含在 TTT 中,所以它在这里.",
+	label = "这什么都不做,但因为它包含在TTT中,所以它在这里.",
 	parent = msavlst
 })
 
@@ -312,7 +312,7 @@ for _, v in pairs(GetSortedRoles()) do
 		gptdlst:SetSpacing(5)
 
 		gptdlst:AddItem(xlib.makeslider{
-			label = "ttt_min_inno_pct",
+			label = "将成为平民的玩家总数的百分比",
 			min = 0.01,
 			max = 1,
 			decimal = 2,
@@ -321,7 +321,7 @@ for _, v in pairs(GetSortedRoles()) do
 		})
 
 		gptdlst:AddItem(xlib.makecheckbox{
-			label = "ttt_" .. v.name .. "_traitor_button",
+			label = "是否启用平民成为叛徒一队",
 			repconvar = "rep_ttt_" .. v.name .. "_traitor_button",
 			parent = gptdlst
 		})
@@ -379,7 +379,7 @@ for _, v in pairs(GetSortedRoles()) do
 
 			if not v.notSelectable then
 				gptdlst:AddItem(xlib.makeslider{
-					label = "ttt_" .. v.name .. "_pct",
+					label = "成为" .. v.name .. "的玩家总数的百分比",
 					min = 0.01,
 					max = 1,
 					decimal = 2,
@@ -388,7 +388,7 @@ for _, v in pairs(GetSortedRoles()) do
 				})
 
 				gptdlst:AddItem(xlib.makeslider{
-					label = "ttt_" .. v.name .. "_max",
+					label = "成为" .. v.name .. "的最大数量",
 					min = 1,
 					max = 64,
 					repconvar = "rep_ttt_" .. v.name .. "_max",
@@ -397,7 +397,7 @@ for _, v in pairs(GetSortedRoles()) do
 
 				if v ~= TRAITOR then
 					gptdlst:AddItem(xlib.makeslider{
-						label = "ttt_" .. v.name .. "_random",
+						label = "成为" .. v.name .. "的概率",
 						min = 1,
 						max = 100,
 						repconvar = "rep_ttt_" .. v.name .. "_random",
@@ -405,7 +405,7 @@ for _, v in pairs(GetSortedRoles()) do
 					})
 
 					gptdlst:AddItem(xlib.makeslider{
-						label = "ttt_" .. v.name .. "_min_players",
+						label = "成为" .. v.name .. "的最少玩家人数",
 						min = 1,
 						max = 64,
 						repconvar = "rep_ttt_" .. v.name .. "_min_players",
@@ -414,7 +414,7 @@ for _, v in pairs(GetSortedRoles()) do
 
 					if ConVarExists("rep_ttt_" .. v.name .. "_karma_min") then
 						gptdlst:AddItem(xlib.makeslider{
-							label = "ttt_" .. v.name .. "_karma_min",
+							label = "成为" .. v.name .. "的最低人品",
 							min = 1,
 							max = 1000,
 							repconvar = "rep_ttt_" .. v.name .. "_karma_min",
@@ -423,14 +423,14 @@ for _, v in pairs(GetSortedRoles()) do
 					end
 
 					gptdlst:AddItem(xlib.makecheckbox{
-						label = v.name .. "? (ttt_" .. v.name .. "_enabled) (def. 1)",
+						label = "是否启用" .. v.name .. "角色 (默认. 1)",
 						repconvar = "rep_ttt_" .. v.name .. "_enabled",
 						parent = gptdlst
 					})
 				end
 
 				gptdlst:AddItem(xlib.makecheckbox{
-					label = "ttt_" .. v.name .. "_traitor_button",
+					label = "是否启用成为叛徒一队",
 					repconvar = "rep_ttt_" .. v.name .. "_traitor_button",
 					parent = gptdlst
 				})
@@ -504,7 +504,7 @@ gpdnalst:SetSize(390, 120)
 gpdnalst:SetSpacing(5)
 
 gpdnalst:AddItem(xlib.makeslider{
-	label = "ttt_killer_dna_range (def. 550)",
+	label = "杀手的DNA最大范围 (默认. 550)",
 	min = 100,
 	max = 1000,
 	repconvar = "rep_ttt_killer_dna_range",
@@ -512,7 +512,7 @@ gpdnalst:AddItem(xlib.makeslider{
 })
 
 gpdnalst:AddItem(xlib.makeslider{
-	label = "ttt_killer_dna_basetime (def. 100)",
+	label = "杀手的DNA样本时间 (默认. 100)",
 	min = 10,
 	max = 200,
 	repconvar = "rep_ttt_killer_dna_basetime",
@@ -520,13 +520,13 @@ gpdnalst:AddItem(xlib.makeslider{
 })
 
 gpdnalst:AddItem(xlib.makecheckbox{
-	label = "ttt2_dna_radar (def. 0)",
+	label = "DNA雷达 (默认. 0)",
 	repconvar = "rep_ttt2_dna_radar",
 	parent = gpdnalst
 })
 
 gpdnalst:AddItem(xlib.makeslider{
-	label = "ttt2_dna_radar_cooldown (def. 5.0)",
+	label = "DNA雷达冷却 (默认. 5.0)",
 	min = 0,
 	max = 60,
 	decimal = 1,
@@ -535,7 +535,7 @@ gpdnalst:AddItem(xlib.makeslider{
 })
 
 gpdnalst:AddItem(xlib.makeslider{
-	label = "ttt2_dna_scanner_slots (def. 4)",
+	label = "DNA插槽 (默认. 4)",
 	min = 1,
 	max = 10,
 	decimal = 0,
@@ -555,7 +555,7 @@ gpradarlst:SetSize(390, 25)
 gpradarlst:SetSpacing(5)
 
 gpradarlst:AddItem(xlib.makeslider{
-	label = "ttt2_radar_charge_time (def. 30)",
+	label = "雷达冷却时间 (默认. 30)",
 	min = 1,
 	max = 60,
 	decimal = 0,
@@ -575,13 +575,13 @@ gpvcblst:SetSize(390, 90)
 gpvcblst:SetSpacing(5)
 
 gpvcblst:AddItem(xlib.makecheckbox{
-	label = "ttt_voice_drain (def. 0)",
+	label = "是否启用语音聊天电池功能 (默认. 0)",
 	repconvar = "rep_ttt_voice_drain",
 	parent = gpvcblst
 })
 
 gpvcblst:AddItem(xlib.makeslider{
-	label = "ttt_voice_drain_normal (def. 0.2)",
+	label = "消耗电池电量 (默认. 0.2)",
 	min = 0.1,
 	max = 1,
 	decimal = 1,
@@ -590,7 +590,7 @@ gpvcblst:AddItem(xlib.makeslider{
 })
 
 gpvcblst:AddItem(xlib.makeslider{
-	label = "ttt_voice_drain_admin (def. 0.05)",
+	label = "管理员和侦探的语音聊天电量 (默认. 0.05)",
 	min = 0.01,
 	max = 1,
 	decimal = 2,
@@ -599,7 +599,7 @@ gpvcblst:AddItem(xlib.makeslider{
 })
 
 gpvcblst:AddItem(xlib.makeslider{
-	label = "ttt_voice_drain_recharge (def. 0.05)",
+	label = "不语音聊天时每滴答的电池充电率 (默认. 0.05)",
 	min = 0.01,
 	max = 1,
 	decimal = 2,
@@ -620,49 +620,49 @@ gpdpslst:SetSize(390, 160)
 gpdpslst:SetSpacing(5)
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt_ragdoll_pinning (def. 1)",
+	label = "布娃娃定住 (默认. 1)",
 	repconvar = "rep_ttt_ragdoll_pinning",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt_ragdoll_pinning_innocents (def. 0)",
+	label = "布娃娃固定无辜者 (默认. 0)",
 	repconvar = "rep_ttt_ragdoll_pinning_innocents",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt_identify_body_woconfirm (def. 1)",
+	label = "身份验证 (默认. 1)",
 	repconvar = "rep_ttt_identify_body_woconfirm",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt_announce_body_found (def. 1)",
+	label = "宣布发现尸体 (默认. 1)",
 	repconvar = "rep_ttt_announce_body_found",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt_limit_spectator_chat (def. 1)",
+	label = "限制观众聊天 (默认. 1)",
 	repconvar = "rep_ttt_limit_spectator_chat",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt_lastwords_chatprint (def. 0)",
+	label = "最后的话聊天打印 (默认. 0)",
 	repconvar = "rep_ttt_lastwords_chatprint",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt2_confirm_detective_only (def. 0)",
+	label = "仅确认侦探 (默认. 0)",
 	repconvar = "rep_ttt2_confirm_detective_only",
 	parent = gpdpslst
 })
 
 gpdpslst:AddItem(xlib.makecheckbox{
-	label = "ttt2_inspect_detective_only (def. 0)",
+	label = "仅探长检测 (默认. 0)",
 	repconvar = "rep_ttt2_inspect_detective_only",
 	parent = gpdpslst
 })
@@ -671,7 +671,7 @@ gpdpslst:AddItem(xlib.makecheckbox{
 local gpogsclp = vgui.Create("DCollapsibleCategory", gppnl)
 gpogsclp:SetSize(390, 290)
 gpogsclp:SetExpanded(0)
-gpogsclp:SetLabel("Other Gameplay Settings")
+gpogsclp:SetLabel("其他游戏设置")
 
 local gpogslst = vgui.Create("DPanelList", gpogsclp)
 gpogslst:SetPos(5, 25)
@@ -679,13 +679,13 @@ gpogslst:SetSize(390, 290)
 gpogslst:SetSpacing(5)
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_newroles_enabled (def. 1)",
+	label = "新角色是否启用 (默认. 1)",
 	repconvar = "rep_ttt_newroles_enabled",
 	parent = gpogslst
 })
 
 gpogslst:AddItem(xlib.makeslider{
-	label = "ttt_max_roles (def. 0)",
+	label = "最大角色 (默认. 0)",
 	min = 0,
 	max = 64,
 	repconvar = "rep_ttt_max_roles",
@@ -693,7 +693,7 @@ gpogslst:AddItem(xlib.makeslider{
 })
 
 gpogslst:AddItem(xlib.makeslider{
-	label = "ttt_max_roles_pct (def. 0)",
+	label = "最大角色百分比 (默认. 0)",
 	min = 0,
 	max = 1,
 	decimal = 2,
@@ -702,7 +702,7 @@ gpogslst:AddItem(xlib.makeslider{
 })
 
 gpogslst:AddItem(xlib.makeslider{
-	label = "ttt_max_baseroles (def. 0)",
+	label = "最大基本角色 (默认. 0)",
 	min = 0,
 	max = 64,
 	repconvar = "rep_ttt_max_baseroles",
@@ -710,7 +710,7 @@ gpogslst:AddItem(xlib.makeslider{
 })
 
 gpogslst:AddItem(xlib.makeslider{
-	label = "ttt_max_baseroles_pct (def. 0)",
+	label = "最大基本角色百分比 (默认. 0)",
 	min = 0,
 	max = 1,
 	decimal = 2,
@@ -719,7 +719,7 @@ gpogslst:AddItem(xlib.makeslider{
 })
 
 gpogslst:AddItem(xlib.makeslider{
-	label = "ttt_minimum_players (def. 2)",
+	label = "玩家人数 (默认. 2)",
 	min = 1,
 	max = 64,
 	repconvar = "rep_ttt_minimum_players",
@@ -727,31 +727,31 @@ gpogslst:AddItem(xlib.makeslider{
 })
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_postround_dm (def. 0)",
+	label = "结束后伤害 (默认. 0)",
 	repconvar = "rep_ttt_postround_dm",
 	parent = gpogslst
 })
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_dyingshot (def. 0)",
+	label = "垂死挣扎 (默认. 0)",
 	repconvar = "rep_ttt_dyingshot",
 	parent = gpogslst
 })
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_no_nade_throw_during_prep (def. 0)",
+	label = "准备阶段投掷手榴弹 (默认. 0)",
 	repconvar = "rep_ttt_no_nade_throw_during_prep",
 	parent = gpogslst
 })
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_weapon_carrying (def. 1)",
+	label = "使用磁棒携带武器 (默认. 1)",
 	repconvar = "rep_ttt_weapon_carrying",
 	parent = gpogslst
 })
 
 gpogslst:AddItem(xlib.makeslider{
-	label = "ttt_weapon_carrying_range (def. 50)",
+	label = "携带磁棒的范围 (默认. 50)",
 	min = 10,
 	max = 100,
 	repconvar = "rep_ttt_weapon_carrying_range",
@@ -759,13 +759,13 @@ gpogslst:AddItem(xlib.makeslider{
 })
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_teleport_telefrags (def. 0)",
+	label = "杀死站在传送目的地的玩家 (默认. 0)",
 	repconvar = "rep_ttt_teleport_telefrags",
 	parent = gpogslst
 })
 
 gpogslst:AddItem(xlib.makecheckbox{
-	label = "ttt_idle (def. 1)",
+	label = "闲置状态警告 (默认. 1)",
 	repconvar = "rep_ttt_idle",
 	parent = gpogslst
 })
@@ -794,7 +794,7 @@ if hudelements then
 			clslst2:SetSpacing(5)
 
 			clslst2:AddItem(xlib.makecheckbox{
-				label = "toggle '" .. elem.id .. "'?",
+				label = "切换 '" .. elem.id .. "'?",
 				repconvar = "rep_ttt2_elem_toggled_" .. elem.id,
 				parent = clslst2
 			})
@@ -802,7 +802,7 @@ if hudelements then
 	end
 
 	xgui.hookEvent("onProcessModules", nil, clspnl.processModules)
-	xgui.addSubModule("TTT2 HUD 设置", clspnl, nil, "terrortown_settings")
+	xgui.addSubModule("恐怖小镇2 HUD设置", clspnl, nil, "terrortown_settings")
 end
 
 -------------------------------------------------------
@@ -814,7 +814,7 @@ local krmpnl = xlib.makelistlayout{w = 415, h = 318, parent = xgui.null}
 local krmclp = vgui.Create("DCollapsibleCategory", krmpnl)
 krmclp:SetSize(390, 400)
 krmclp:SetExpanded(1)
-krmclp:SetLabel("业余值")
+krmclp:SetLabel("业力")
 
 local krmlst = vgui.Create("DPanelList", krmclp)
 krmlst:SetPos(5, 25)
@@ -822,19 +822,19 @@ krmlst:SetSize(390, 400)
 krmlst:SetSpacing(5)
 
 krmlst:AddItem(xlib.makecheckbox{
-	label = "ttt_karma",
+	label = "业力系统",
 	repconvar = "rep_ttt_karma",
 	parent = krmlst
 })
 
 krmlst:AddItem(xlib.makecheckbox{
-	label = "ttt_karma_strict",
+	label = "伤害惩罚系统",
 	repconvar = "rep_ttt_karma_strict",
 	parent = krmlst
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_starting (def. 1000)",
+	label = "业力值初始值 (默认. 1000)",
 	min = 500,
 	max = 2000,
 	repconvar = "rep_ttt_karma_starting",
@@ -842,7 +842,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_max (def. 1000)",
+	label = "最大业力值 (默认. 1000)",
 	min = 500,
 	max = 2000,
 	repconvar = "rep_ttt_karma_max",
@@ -850,7 +850,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_ratio (def. 0.001)",
+	label = "业力值损害比率设置 (默认. 0.001)",
 	min = 0.001,
 	max = 0.009,
 	decimal = 3,
@@ -859,7 +859,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_kill_penalty (def. 15)",
+	label = "杀戮惩罚 (默认. 15)",
 	min = 1,
 	max = 30,
 	repconvar = "rep_ttt_karma_kill_penalty",
@@ -867,7 +867,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_round_increment (def. 5)",
+	label = "每轮结束基础数量 (默认. 5)",
 	min = 1,
 	max = 30,
 	repconvar = "rep_ttt_karma_round_increment",
@@ -875,7 +875,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_clean_bonus (def. 30)",
+	label = "额外治愈 (默认. 30)",
 	min = 10,
 	max = 100,
 	repconvar = "rep_ttt_karma_clean_bonus",
@@ -883,7 +883,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_traitordmg_ratio (def. 0.0003)",
+	label = "伤害叛徒的业力奖励 (默认. 0.0003)",
 	min = 0.0001,
 	max = 0.001,
 	decimal = 4,
@@ -892,7 +892,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_traitorkill_bonus (def. 40)",
+	label = "杀死叛徒的额外业力 (默认. 40)",
 	min = 10,
 	max = 100,
 	repconvar = "rep_ttt_karma_traitorkill_bonus",
@@ -900,13 +900,13 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makecheckbox{
-	label = "ttt_karma_low_autokick (def. 1)",
+	label = "回合结束时自动踢出低业力等级的玩家 (默认. 1)",
 	repconvar = "rep_ttt_karma_low_autokick",
 	parent = krmlst
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_low_amount (def. 450)",
+	label = "玩家被踢的业力阈值 (默认. 450)",
 	min = 100,
 	max = 1000,
 	repconvar = "rep_ttt_karma_low_amount",
@@ -914,13 +914,13 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makecheckbox{
-	label = "ttt_karma_low_ban (def. 1)",
+	label = "低业力值封禁 (默认. 1)",
 	repconvar = "rep_ttt_karma_low_ban",
 	parent = krmlst
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_low_ban_minutes (def. 60)",
+	label = "封禁业力值最低的玩家时间 (默认. 60)",
 	min = 10,
 	max = 100,
 	repconvar = "rep_ttt_karma_low_ban_minutes",
@@ -928,19 +928,19 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 krmlst:AddItem(xlib.makecheckbox{
-	label = "ttt_karma_persist (def. 0)",
+	label = "业力值持久存储 (默认. 0)",
 	repconvar = "rep_ttt_karma_persist",
 	parent = krmlst
 })
 
 krmlst:AddItem(xlib.makecheckbox{
-	label = "ttt_karma_debugspam (def. 0)",
+	label = "调试业力变化到控制台 (默认. 0)",
 	repconvar = "rep_ttt_karma_debugspam",
 	parent = krmlst
 })
 
 krmlst:AddItem(xlib.makeslider{
-	label = "ttt_karma_clean_half (def. 0.25)",
+	label = "业力起始水平 (默认. 0.25)",
 	min = 0.01,
 	max = 0.9,
 	decimal = 2,
@@ -949,7 +949,7 @@ krmlst:AddItem(xlib.makeslider{
 })
 
 xgui.hookEvent("onProcessModules", nil, krmpnl.processModules)
-xgui.addSubModule("Karma", krmpnl, nil, "terrortown_settings")
+xgui.addSubModule("业力", krmpnl, nil, "terrortown_settings")
 
 -------------------------------------------------------------
 -------------------- MODULE: MAP RELATED --------------------
@@ -968,13 +968,13 @@ maplst:SetSize(390, 400)
 maplst:SetSpacing(5)
 
 maplst:AddItem(xlib.makecheckbox{
-	label = "ttt_use_weapon_spawn_scripts (def. 1)",
+	label = "切换是否使用武器脚本 (默认. 1)",
 	repconvar = "rep_ttt_use_weapon_spawn_scripts",
 	parent = maplst
 })
 
 maplst:AddItem(xlib.makeslider{
-	label = "ttt_weapon_spawn_count (def. 0)",
+	label = "武器生成数 (默认. 0)",
 	min = 0,
 	max = 100,
 	decimal = 0,
@@ -997,7 +997,7 @@ for _, v in pairs(GetSortedRoles()) do
 			local ectcclp = vgui.Create("DCollapsibleCategory", ecpnl)
 			ectcclp:SetSize(390, 125)
 			ectcclp:SetExpanded(b2 and 1 or 0)
-			ectcclp:SetLabel(v.name .. " credits")
+			ectcclp:SetLabel(v.name .. " 学分")
 
 			b2 = false
 
@@ -1007,7 +1007,7 @@ for _, v in pairs(GetSortedRoles()) do
 			ectclst:SetSpacing(5)
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_credits_starting (def. 2)",
+				label = "初始学分数量 (默认. 2)",
 				min = 0,
 				max = 10,
 				repconvar = "rep_ttt_credits_starting",
@@ -1015,7 +1015,7 @@ for _, v in pairs(GetSortedRoles()) do
 			})
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_credits_award_pct (def. 0.35)",
+				label = "百分比的无辜玩家死亡获得学分 (默认. 0.35)",
 				min = 0.01,
 				max = 0.9,
 				decimal = 2,
@@ -1024,7 +1024,7 @@ for _, v in pairs(GetSortedRoles()) do
 			})
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_credits_award_size (def. 1)",
+				label = "授予的学分数量 (默认. 1)",
 				min = 0,
 				max = 5,
 				repconvar = "rep_ttt_credits_award_size",
@@ -1032,7 +1032,7 @@ for _, v in pairs(GetSortedRoles()) do
 			})
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_credits_award_repeat (def. 1)",
+				label = "发放学分奖励数量  (默认. 1)",
 				min = 0,
 				max = 5,
 				repconvar = "rep_ttt_credits_award_repeat",
@@ -1040,7 +1040,7 @@ for _, v in pairs(GetSortedRoles()) do
 			})
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_credits_detectivekill (def. 1)",
+				label = "叛徒杀死侦探玩家时获得的学分点数 (默认. 1)",
 				min = 0,
 				max = 5,
 				repconvar = "rep_ttt_credits_detectivekill",
@@ -1050,7 +1050,7 @@ for _, v in pairs(GetSortedRoles()) do
 			local ectcclp = vgui.Create("DCollapsibleCategory", ecpnl)
 			ectcclp:SetSize(390, 75)
 			ectcclp:SetExpanded(b2 and 1 or 0)
-			ectcclp:SetLabel(v.name .. " credits")
+			ectcclp:SetLabel(v.name .. " 学分")
 
 			b2 = false
 
@@ -1060,7 +1060,7 @@ for _, v in pairs(GetSortedRoles()) do
 			ectclst:SetSpacing(5)
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_" .. v.abbr .. "_credits_starting",
+				label = "探长初始学分",
 				min = 0,
 				max = 10,
 				repconvar = "rep_ttt_" .. v.abbr .. "_credits_starting",
@@ -1068,7 +1068,7 @@ for _, v in pairs(GetSortedRoles()) do
 			})
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_" .. v.abbr .. "_credits_traitorkill",
+				label = "探长杀死叛徒学分",
 				min = 0,
 				max = 10,
 				repconvar = "rep_ttt_" .. v.abbr .. "_credits_traitorkill",
@@ -1076,7 +1076,7 @@ for _, v in pairs(GetSortedRoles()) do
 			})
 
 			ectclst:AddItem(xlib.makeslider{
-				label = "ttt_" .. v.abbr .. "_credits_traitordead",
+				label = "叛徒死亡给予学分",
 				min = 0,
 				max = 10,
 				repconvar = "rep_ttt_" .. v.abbr .. "_credits_traitordead",
@@ -1087,7 +1087,7 @@ for _, v in pairs(GetSortedRoles()) do
 end
 
 xgui.hookEvent("onProcessModules", nil, ecpnl.processModules)
-xgui.addSubModule("设备积分", ecpnl, nil, "terrortown_settings")
+xgui.addSubModule("设备学分", ecpnl, nil, "terrortown_settings")
 
 --------------------Prop possession Module--------------------
 local pppnl = xlib.makelistlayout{w = 415, h = 318, parent = xgui.null}
@@ -1102,22 +1102,22 @@ pplst:SetPos(5, 25)
 pplst:SetSize(390, 120)
 pplst:SetSpacing(5)
 
-local ppspc = xlib.makecheckbox{label = "ttt_spec_prop_control  (def. 1)", repconvar = "rep_ttt_spec_prop_control", parent = pplst}
+local ppspc = xlib.makecheckbox{label = "切换观众是否可以拥有道具  (默认. 1)", repconvar = "rep_ttt_spec_prop_control", parent = pplst}
 pplst:AddItem(ppspc)
 
-local ppspb = xlib.makeslider{label = "ttt_spec_prop_base (def. 8)", min = 0, max = 50, repconvar = "rep_ttt_spec_prop_base", parent = pplst}
+local ppspb = xlib.makeslider{label = "道具拳数 (默认. 8)", min = 0, max = 50, repconvar = "rep_ttt_spec_prop_base", parent = pplst}
 pplst:AddItem(ppspb)
 
-local ppspmp = xlib.makeslider{label = "ttt_spec_prop_maxpenalty (def. -6)", min = -50, max = 0, repconvar = "rep_ttt_spec_prop_maxpenalty", parent = pplst}
+local ppspmp = xlib.makeslider{label = "负分的冲头限制的最大减少 (默认. -6)", min = -50, max = 0, repconvar = "rep_ttt_spec_prop_maxpenalty", parent = pplst}
 pplst:AddItem(ppspmp)
 
-local ppspmb = xlib.makeslider{label = "ttt_spec_prop_maxbonus (def. 16)", min = 0, max = 50, repconvar = "rep_ttt_spec_prop_maxbonus", parent = pplst}
+local ppspmb = xlib.makeslider{label = "正分的打孔计限制的最大增加 (默认. 16)", min = 0, max = 50, repconvar = "rep_ttt_spec_prop_maxbonus", parent = pplst}
 pplst:AddItem(ppspmb)
 
-local ppspf = xlib.makeslider{label = "ttt_spec_prop_force (def. 110)", min = 50, max = 300, repconvar = "rep_ttt_spec_prop_force", parent = pplst}
+local ppspf = xlib.makeslider{label = "每次冲头移动道具的力的大小 (默认. 110)", min = 50, max = 300, repconvar = "rep_ttt_spec_prop_force", parent = pplst}
 pplst:AddItem(ppspf)
 
-local ppprt = xlib.makeslider{label = "ttt_spec_prop_rechargetime (def. 1)", min = 0, max = 10, repconvar = "rep_ttt_spec_prop_rechargetime", parent = pplst}
+local ppprt = xlib.makeslider{label = "打孔计中一个点充电的秒数 (默认. 1)", min = 0, max = 10, repconvar = "rep_ttt_spec_prop_rechargetime", parent = pplst}
 pplst:AddItem(ppprt)
 
 xgui.hookEvent("onProcessModules", nil, pppnl.processModules)
@@ -1140,7 +1140,7 @@ arlst:SetSize(390, 150)
 arlst:SetSpacing(5)
 
 arlst:AddItem(xlib.makeslider{
-	label = "ttt_idle_limit (def. 180)",
+	label = "空闲的时间(以秒为单位) (默认. 180)",
 	min = 50,
 	max = 300,
 	repconvar = "rep_ttt_idle_limit",
@@ -1148,7 +1148,7 @@ arlst:AddItem(xlib.makeslider{
 })
 
 arlst:AddItem(xlib.makeslider{
-	label = "ttt_namechange_bantime (def. 10)",
+	label = "禁止更改姓名的玩家的时间 (默认. 10)",
 	min = 0,
 	max = 60,
 	repconvar = "rep_ttt_namechange_bantime",
@@ -1156,31 +1156,31 @@ arlst:AddItem(xlib.makeslider{
 })
 
 arlst:AddItem(xlib.makecheckbox{
-	label = "ttt_namechange_kick (def. 1)",
+	label = "是否自动踢出更改名称的玩家 (默认. 1)",
 	repconvar = "rep_ttt_namechange_kick",
 	parent = arlst
 })
 
 arlst:AddItem(xlib.makecheckbox{
-	label = "ttt_log_damage_for_console (def. 1)",
+	label = "控制台的伤害日志 (默认. 1)",
 	repconvar = "rep_ttt_log_damage_for_console",
 	parent = arlst
 })
 
 arlst:AddItem(xlib.makecheckbox{
-	label = "ttt_damagelog_save (def. 0)",
+	label = "损坏日志保存 (默认. 0)",
 	repconvar = "rep_ttt_damagelog_save",
 	parent = arlst
 })
 
 arlst:AddItem(xlib.makecheckbox{
-	label = "ttt_ragdoll_collide (def. 0)",
+	label = "布娃娃碰撞 (默认. 0)",
 	repconvar = "rep_ttt_ragdoll_collide",
 	parent = arlst
 })
 
 arlst:AddItem(xlib.makecheckbox{
-	label = "ttt2_tbutton_admin_show (def. 0)",
+	label = "按钮管理显示 (默认. 0)",
 	repconvar = "rep_ttt2_tbutton_admin_show",
 	parent = arlst
 })
@@ -1205,13 +1205,13 @@ slst:SetSize(390, 125)
 slst:SetSpacing(5)
 
 slst:AddItem(xlib.makecheckbox{
-	label = "ttt2_sprint_enabled (def. 1)",
+	label = "是否启用冲刺  (默认. 1)",
 	repconvar = "rep_ttt2_sprint_enabled",
 	parent = slst
 })
 
 slst:AddItem(xlib.makeslider{
-	label = "ttt2_sprint_max (def. 0.5)",
+	label = "最大冲刺 (默认. 0.5)",
 	min = 0,
 	max = 2,
 	decimal = 2,
@@ -1220,7 +1220,7 @@ slst:AddItem(xlib.makeslider{
 })
 
 slst:AddItem(xlib.makeslider{
-	label = "ttt2_sprint_stamina_consumption (def. 0.6)",
+	label = "冲刺耐力消耗 (默认. 0.6)",
 	min = 0,
 	max = 2,
 	decimal = 2,
@@ -1229,7 +1229,7 @@ slst:AddItem(xlib.makeslider{
 })
 
 slst:AddItem(xlib.makeslider{
-	label = "ttt2_sprint_stamina_regeneration (def. 0.3)",
+	label = "冲刺耐力再生 (默认. 0.3)",
 	min = 0,
 	max = 2,
 	decimal = 2,
@@ -1238,13 +1238,13 @@ slst:AddItem(xlib.makeslider{
 })
 
 slst:AddItem(xlib.makecheckbox{
-	label = "ttt2_sprint_crosshair (def. 1)",
+	label = "冲刺十字准线 (默认. 1)",
 	repconvar = "rep_ttt2_sprint_crosshair",
 	parent = slst
 })
 
 xgui.hookEvent("onProcessModules", nil, spnl.processModules)
-xgui.addSubModule("TTT2冲刺", spnl, nil, "terrortown_settings")
+xgui.addSubModule("恐怖小镇2冲刺", spnl, nil, "terrortown_settings")
 
 --------------------------------------------------------
 -------------------- MODULE: Doors ---------------------
@@ -1255,7 +1255,7 @@ local dpnl = xlib.makelistlayout{w = 415, h = 318, parent = xgui.null}
 local dclp = vgui.Create("DCollapsibleCategory", dpnl)
 dclp:SetSize(390, 20)
 dclp:SetExpanded(1)
-dclp:SetLabel("通用设置")
+dclp:SetLabel("常规设置")
 
 local dlst = vgui.Create("DPanelList", dclp)
 dlst:SetPos(5, 25)
@@ -1263,7 +1263,7 @@ dlst:SetSize(390, 20)
 dlst:SetSpacing(5)
 
 dlst:AddItem(xlib.makecheckbox{
-	label = "ttt2_doors_force_pairs (def. 1)",
+	label = "是否启用门力对 (默认. 1)",
 	repconvar = "rep_ttt2_doors_force_pairs",
 	parent = dlst
 })
@@ -1279,19 +1279,19 @@ dlst2:SetSize(390, 90)
 dlst2:SetSpacing(5)
 
 dlst2:AddItem(xlib.makecheckbox{
-	label = "ttt2_doors_destructible (def. 0)",
+	label = "是否启用门可破坏 (默认. 0)",
 	repconvar = "rep_ttt2_doors_destructible",
 	parent = dlst2
 })
 
 dlst2:AddItem(xlib.makecheckbox{
-	label = "ttt2_doors_locked_indestructible (def. 1)",
+	label = "是否启用门锁着坚不可摧 (默认. 1)",
 	repconvar = "rep_ttt2_doors_locked_indestructible",
 	parent = dlst2
 })
 
 dlst2:AddItem(xlib.makeslider{
-	label = "ttt2_doors_health (def. 100)",
+	label = "门生命值 (默认. 100)",
 	min = 0,
 	max = 500,
 	decimal = 0,
@@ -1300,7 +1300,7 @@ dlst2:AddItem(xlib.makeslider{
 })
 
 dlst2:AddItem(xlib.makeslider{
-	label = "ttt2_doors_prop_health (def. 50)",
+	label = "门道具健康 (默认. 50)",
 	min = 0,
 	max = 500,
 	decimal = 0,
@@ -1310,7 +1310,7 @@ dlst2:AddItem(xlib.makeslider{
 
 
 xgui.hookEvent("onProcessModules", nil, spnl.processModules)
-xgui.addSubModule("TTT2门", dpnl, nil, "terrortown_settings")
+xgui.addSubModule("恐怖小镇2的门", dpnl, nil, "terrortown_settings")
 
 -----------------------------------------------------------
 -------------------- MODULE: Inventory --------------------
@@ -1340,7 +1340,7 @@ ilst1:AddItem(xlib.makelabel{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_melee_slots (def. 1)",
+	label = "最大撬棍插槽 (默认. 1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1349,7 +1349,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_secondary_slots (def. 1)",
+	label = "最大副插槽 (默认. 1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1358,7 +1358,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_primary_slots (def. 1)",
+	label = "最大主插槽 (默认. 1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1367,7 +1367,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_nade_slots (def. 1)",
+	label = "最大制作插槽 (默认. 1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1376,7 +1376,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_carry_slots (def. 1)",
+	label = "最大携带插槽 (默认. 1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1385,7 +1385,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_unarmed_slots (def. 1)",
+	label = "最大非武装插槽 (默认. 1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1394,7 +1394,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_special_slots (def. 2)",
+	label = "最大特殊插槽 (默认. 2)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1403,7 +1403,7 @@ ilst1:AddItem(xlib.makeslider{
 })
 
 ilst1:AddItem(xlib.makeslider{
-	label = "ttt2_max_extra_slots (def. -1)",
+	label = "最大额外插槽 (默认. -1)",
 	min = -1,
 	max = 10,
 	decimal = 0,
@@ -1423,13 +1423,13 @@ ilst2:SetSize(390, 240)
 ilst2:SetSpacing(5)
 
 ilst2:AddItem(xlib.makecheckbox{
-	label = "ttt_weapon_autopickup (def. 1)",
+	label = "武器自动拾取 (默认. 1)",
 	repconvar = "rep_ttt_weapon_autopickup",
 	parent = slst
 })
 
 xgui.hookEvent("onProcessModules", nil, ipnl.processModules)
-xgui.addSubModule("TTT2 存货", ipnl, nil, "terrortown_settings")
+xgui.addSubModule("恐怖小镇2存货", ipnl, nil, "terrortown_settings")
 
 ------------------------------------------------------------
 -------------------- MODULE: SCOREBOARD --------------------
@@ -1448,37 +1448,37 @@ sblst:SetSize(390, 100)
 sblst:SetSpacing(5)
 
 sblst:AddItem(xlib.makecheckbox{
-	label = "ttt_highlight_admins (def. 1)",
+	label = "记分板上显示管理员颜色 (默认. 1)",
 	repconvar = "rep_ttt_highlight_admins",
 	parent = sblst
 })
 
 sblst:AddItem(xlib.makecheckbox{
-	label = "ttt_highlight_dev (def. 1)",
+	label = "记分板上显示探长颜色 (默认. 1)",
 	repconvar = "rep_ttt_highlight_dev",
 	parent = sblst
 })
 
 sblst:AddItem(xlib.makecheckbox{
-	label = "ttt_highlight_vip (def. 1)",
+	label = "记分板上显示VIP (默认. 1)",
 	repconvar = "rep_ttt_highlight_vip",
 	parent = sblst
 })
 
 sblst:AddItem(xlib.makecheckbox{
-	label = "ttt_highlight_addondev (def. 1)",
+	label = "记分板上显示插件开发 (默认. 1)",
 	repconvar = "rep_ttt_highlight_addondev",
 	parent = sblst
 })
 
 sblst:AddItem(xlib.makecheckbox{
-	label = "ttt_highlight_supporter (def. 1)",
+	label = "记分板上显示支持者 (默认. 1)",
 	repconvar = "rep_ttt_highlight_supporter",
 	parent = sblst
 })
 
 xgui.hookEvent("onProcessModules", nil, sbpnl.processModules)
-xgui.addSubModule("TTT2 记分牌", sbpnl, nil, "terrortown_settings")
+xgui.addSubModule("恐怖小镇2记分牌", sbpnl, nil, "terrortown_settings")
 
 -------------------------------------------------------
 -------------------- MODULE: ARMOR --------------------
@@ -1498,13 +1498,13 @@ alst1:SetSize(390, 50)
 alst1:SetSpacing(5)
 
 alst1:AddItem(xlib.makecheckbox{
-	label = "ttt_armor_classic (def. 0)",
+	label = "盔甲经典 (默认. 0)",
 	repconvar = "rep_ttt_armor_classic",
 	parent = alst1
 })
 
 alst1:AddItem(xlib.makecheckbox{
-	label = "ttt_armor_enable_reinforced (def. 1)",
+	label = "装甲增强 (默认. 1)",
 	repconvar = "rep_ttt_armor_enable_reinforced",
 	parent = alst1
 })
@@ -1521,7 +1521,7 @@ alst2:SetSize(390, 65)
 alst2:SetSpacing(5)
 
 alst2:AddItem(xlib.makeslider{
-	label = "ttt_item_armor_value (def. 30)",
+	label = "物品护甲值 (默认. 30)",
 	repconvar = "rep_ttt_item_armor_value",
 	min = 0,
 	max = 100,
@@ -1530,13 +1530,13 @@ alst2:AddItem(xlib.makeslider{
 })
 
 alst2:AddItem(xlib.makecheckbox{
-	label = "ttt_item_armor_block_headshots (def. 0)",
+	label = "物品装甲块爆头 (默认. 0)",
 	repconvar = "rep_ttt_item_armor_block_headshots",
 	parent = alst2
 })
 
 alst2:AddItem(xlib.makecheckbox{
-	label = "ttt_item_armor_block_blastdmg (def. 0)",
+	label = "物品装甲块爆炸伤害 (默认. 0)",
 	repconvar = "rep_ttt_item_armor_block_blastdmg",
 	parent = alst2
 })
@@ -1553,7 +1553,7 @@ alst3:SetSize(390, 100)
 alst3:SetSpacing(5)
 
 alst3:AddItem(xlib.makeslider{
-	label = "ttt_armor_on_spawn (def. 0)",
+	label = "重生时的盔甲 (默认. 0)",
 	min = 0,
 	max = 100,
 	decimal = 0,
@@ -1562,7 +1562,7 @@ alst3:AddItem(xlib.makeslider{
 })
 
 alst3:AddItem(xlib.makeslider{
-	label = "ttt_armor_threshold_for_reinforced (def. 50)",
+	label = "强化装甲阈值 (默认. 50)",
 	min = 0,
 	max = 100,
 	decimal = 0,
@@ -1571,7 +1571,7 @@ alst3:AddItem(xlib.makeslider{
 })
 
 alst3:AddItem(xlib.makeslider{
-	label = "ttt_armor_damage_block_pct (def. 0.2)",
+	label = "装甲损坏块百分比 (默认. 0.2)",
 	min = 0,
 	max = 1,
 	decimal = 2,
@@ -1580,7 +1580,7 @@ alst3:AddItem(xlib.makeslider{
 })
 
 alst3:AddItem(xlib.makeslider{
-	label = "ttt_armor_damage_health_pct (def. 0.7)",
+	label = "盔甲伤害生命值 百分比 (默认. 0.7)",
 	repconvar = "rep_ttt_armor_damage_health_pct",
 	min = 0,
 	max = 1,
@@ -1589,7 +1589,7 @@ alst3:AddItem(xlib.makeslider{
 })
 
 xgui.hookEvent("onProcessModules", nil, apnl.processModules)
-xgui.addSubModule("TTT2护甲", apnl, nil, "terrortown_settings")
+xgui.addSubModule("恐怖小镇2护甲", apnl, nil, "terrortown_settings")
 
 ---------------------------------------------------------------
 -------------------- MODULE: MISCELLANEOUS --------------------
@@ -1608,7 +1608,7 @@ misclst:SetSize(390, 215)
 misclst:SetSpacing(5)
 
 misclst:AddItem(xlib.makeslider{
-	label = "ttt2_crowbar_shove_delay (def. 1.0)",
+	label = "撬棍推延迟 (默认. 1.0)",
 	min = 0,
 	max = 10,
 	decimal = 1,
@@ -1617,13 +1617,13 @@ misclst:AddItem(xlib.makeslider{
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_detective_hats (def. 0)",
+	label = "侦探帽 (默认. 0)",
 	repconvar = "rep_ttt_detective_hats",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makeslider{
-	label = "ttt_playercolor_mode (def. 1)",
+	label = "播放器颜色模式 (默认. 1)",
 	min = 0,
 	max = 3,
 	repconvar = "rep_ttt_playercolor_mode",
@@ -1631,43 +1631,43 @@ misclst:AddItem(xlib.makeslider{
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_ragdoll_collide (def. 0)",
+	label = "布娃娃碰撞 (默认. 0)",
 	repconvar = "rep_ttt_ragdoll_collide",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_bots_are_spectators (def. 0)",
+	label = "是否启用机器人是旁观者 (默认. 0)",
 	repconvar = "rep_ttt_bots_are_spectators",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_debug_preventwin (def. 0)",
+	label = "防止回合结束 (默认. 0)",
 	repconvar = "rep_ttt_debug_preventwin",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_locational_voice (def. 0)",
+	label = "位置语音 (默认. 0)",
 	repconvar = "rep_ttt_locational_voice",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_allow_discomb_jump (def. 0)",
+	label = "允许不跳 (默认. 0)",
 	repconvar = "rep_ttt_allow_discomb_jump",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makecheckbox{
-	label = "ttt_enforce_playermodel (def. 1)",
+	label = "强制执行玩家模型 (默认. 1)",
 	repconvar = "rep_ttt_enforce_playermodel",
 	parent = misclst
 })
 
 misclst:AddItem(xlib.makeslider{
-	label = "ttt_spawn_wave_interval (def. 0)",
+	label = "生成波间隔 (默认. 0)",
 	min = 0,
 	max = 30,
 	repconvar = "rep_ttt_spawn_wave_interval",
