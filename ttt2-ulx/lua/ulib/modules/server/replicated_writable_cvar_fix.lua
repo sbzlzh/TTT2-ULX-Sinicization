@@ -1,4 +1,4 @@
-local debugFix = CreateConVar("TTT2DebugUlibReplicatedWritableCvarStackTrace", "0", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "If activated prints debug stacktraces, when `ULib.replicatedWritableCvar` is used without a string as default_value.")
+local debugFix = CreateConVar("TTT2DebugUlibReplicatedWritableCvarStackTrace", "0", {FCVAR_ARCHIVE, FCVAR_NOTIFY}, "如果激活,当'ULib.replicatedWritableCvar'被使用而没有一个字符串作为default_value时,会打印出调试堆栈跟踪.")
 
 local oldreplicatedWritableCvar = ULib.replicatedWritableCvar
 

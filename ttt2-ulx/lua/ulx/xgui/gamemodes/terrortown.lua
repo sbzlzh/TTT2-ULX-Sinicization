@@ -154,7 +154,7 @@ end
 terrortown_settings.processModules()
 
 xgui.hookEvent("onProcessModules", nil, terrortown_settings.processModules)
-xgui.addModule("恐怖小镇2服务器设定", terrortown_settings, "icon16/ttt.png", "xgui_gmsettings")
+xgui.addModule("TTT2设定", terrortown_settings, "icon16/ttt.png", "xgui_gmsettings")
 
 -----------------------------------------------------------------
 -------------------- MODULE: ROUND STRUCTURE --------------------
